@@ -1,0 +1,15 @@
+# robots.txt for The Caspian Journal
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Block admin areas (if you add them later)
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://www.thecaspianjournal.com/sitemap.xml
+
+# Crawl delay (optional - be nice to servers)
+Crawl-delay: 1

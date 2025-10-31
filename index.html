@@ -51,6 +51,17 @@
             animation: pulse-glow 2s ease-in-out infinite;
         }
 
+        /* Logo size optimization - fits perfectly at 100% zoom */
+        .main-logo {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .overlay-logo {
+            font-size: clamp(2rem, 5vw, 4rem);
+        }
+
         /* Responsive adjustments */
         @media (max-width: 1024px) {
             .hero-grid { grid-template-columns: 1fr !important; }
@@ -79,11 +90,6 @@
         .logo-fixed.show {
             transform: translateY(0);
         }
-
-        .logo-fixed .logo-text {
-            font-size: 1.5rem !important;
-            padding: 1rem 0 !important;
-        }
     </style>
 </head>
 <body class="bg-white relative">
@@ -110,22 +116,23 @@
 
         <!-- Top Bar -->
         <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-b border-gray-700">
-            <div class="max-w-7xl mx-auto px-6 py-2.5">
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-8 text-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5">
+                <div class="flex items-center justify-between text-xs sm:text-sm">
+                    <div class="flex items-center gap-2 sm:gap-8">
                         <div class="flex items-center gap-2 font-medium">
-                            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <path d="M12 6v6l4 2"></path>
                             </svg>
-                            <span class="text-gray-300">Wednesday, October 30, 2025</span>
+                            <span class="text-gray-300 hidden sm:inline">Wednesday, October 30, 2025</span>
+                            <span class="text-gray-300 sm:hidden">Oct 30, 2025</span>
                         </div>
-                        <span class="text-gray-400">|</span>
-                        <span class="text-gray-300">Baku 🌤️ 18°C</span>
+                        <span class="text-gray-400 hidden sm:inline">|</span>
+                        <span class="text-gray-300 hidden sm:inline">Baku 🌤️ 18°C</span>
                     </div>
-                    <div class="flex items-center gap-6">
-                        <span class="text-gray-300">EN | AZ | RU</span>
-                        <button class="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-all text-sm">
+                    <div class="flex items-center gap-3 sm:gap-6">
+                        <span class="text-gray-300">EN</span>
+                        <button class="px-2 sm:px-4 py-1 sm:py-1.5 bg-blue-600 hover:bg-blue-700 rounded text-xs sm:text-sm font-medium">
                             Subscribe
                         </button>
                     </div>
@@ -133,31 +140,64 @@
             </div>
         </div>
 
+        <!-- Fixed Logo Bar (shows on scroll) -->
+        <div id="fixed-logo" class="logo-fixed">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="flex items-center justify-between py-3">
+                    <button class="text-gray-700 hover:text-blue-900 p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <h1 class="text-xl sm:text-2xl font-serif text-blue-900 font-extrabold tracking-tight">
+                        The Caspian Journal
+                    </h1>
+                    <button class="text-gray-700 hover:text-blue-900 p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- Header -->
         <header class="border-b-2 border-gray-100 bg-white shadow-sm">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="py-8 flex items-center justify-center">
-                    <div class="text-center">
-                        <h1 class="text-6xl font-serif text-blue-900 tracking-tight font-extrabold" style="letter-spacing: -0.02em;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="py-6 sm:py-8 flex items-center justify-between">
+                    <button class="text-gray-700 hover:text-blue-900 transition-colors sm:block hidden">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <div class="text-center flex-1">
+                        <h1 class="main-logo font-serif text-blue-900 tracking-tight font-extrabold" style="letter-spacing: -0.03em;">
                             The Caspian Journal
                         </h1>
-                        <p class="text-xs text-gray-500 mt-2 tracking-widest font-medium">
-                            THE VOICE OF THE CASPIAN REGION • TRUTH • INDEPENDENCE • EST. 2025
+                        <p class="text-[8px] sm:text-[10px] text-gray-500 mt-1 sm:mt-2 tracking-widest font-medium uppercase">
+                            THE VOICE OF THE CASPIAN REGION
                         </p>
                     </div>
+                    <button class="text-gray-700 hover:text-blue-900 transition-colors sm:block hidden">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="M21 21l-4.35-4.35"></path>
+                        </svg>
+                    </button>
                 </div>
 
                 <!-- Navigation -->
-                <nav class="border-t border-gray-200">
-                    <div class="flex items-center justify-center gap-1 py-0">
-                        <button class="px-6 py-4 text-sm font-semibold text-blue-900 bg-blue-50">Home</button>
-                        <button class="px-6 py-4 text-sm font-semibold text-gray-600">World</button>
-                        <button class="px-6 py-4 text-sm font-semibold text-gray-600">Economy</button>
-                        <button class="px-6 py-4 text-sm font-semibold text-gray-600">Politics</button>
-                        <button class="px-6 py-4 text-sm font-semibold text-gray-600">Technology</button>
-                        <button class="px-6 py-4 text-sm font-semibold text-gray-600">Energy</button>
-                        <button class="px-6 py-4 text-sm font-semibold text-gray-600">Culture</button>
-                        <button class="px-6 py-4 text-sm font-semibold text-gray-600">Sports</button>
+                <nav class="border-t border-gray-200 overflow-x-auto">
+                    <div class="flex items-center justify-start sm:justify-center gap-1 py-0 min-w-max sm:min-w-0">
+                        <button class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-blue-900 bg-blue-50 whitespace-nowrap">Home</button>
+                        <button class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap">World</button>
+                        <button class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap">Economy</button>
+                        <button class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap">Politics</button>
+                        <button class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap mobile-hide">Technology</button>
+                        <button class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap mobile-hide">Energy</button>
+                        <button class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap mobile-hide">Culture</button>
+                        <button class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap mobile-hide">Sports</button>
                     </div>
                 </nav>
             </div>
@@ -315,10 +355,10 @@
         <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center fade-in w-full">
             <!-- Logo -->
             <div class="mb-6 sm:mb-8">
-                <h1 class="text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif text-white font-extrabold tracking-tight mb-2 sm:mb-3 px-4" style="letter-spacing: -0.03em; line-height: 1.1;">
+                <h1 class="overlay-logo font-serif text-white font-extrabold tracking-tight mb-2 sm:mb-3" style="letter-spacing: -0.02em;">
                     The Caspian Journal
                 </h1>
-                <p class="text-blue-300 text-[9px] sm:text-[10px] md:text-xs lg:text-sm tracking-widest font-medium uppercase px-4">
+                <p class="text-blue-300 text-xs sm:text-sm tracking-widest font-medium uppercase">
                     The Voice of the Caspian Region
                 </p>
             </div>
@@ -417,17 +457,12 @@
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const timeElements = document.querySelectorAll('.text-gray-300');
             if (timeElements[0]) {
-                timeElements[0].textContent = now.toLocaleDateString('en-US', options);
+                const fullDate = now.toLocaleDateString('en-US', options);
+                timeElements[0].textContent = fullDate;
             }
         }
         updateTime();
         setInterval(updateTime, 60000);
-
-        // Toggle search (placeholder)
-        function toggleSearch() {
-            // Search functionality placeholder
-            console.log('Search toggled');
-        }
     </script>
 </body>
 </html>

@@ -388,16 +388,18 @@
                 <p class="text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">
                     Be the first to know when we launch
                 </p>
-                <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-md mx-auto">
+                <form action="https://formspree.io/f/xjkppadl" method="POST" class="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-md mx-auto">
                     <input 
                         type="email" 
+                        name="email"
                         placeholder="Enter your email"
+                        required
                         class="flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-gray-900 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
-                    <button class="bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base transition-all transform hover:scale-105 whitespace-nowrap">
+                    <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base transition-all transform hover:scale-105 whitespace-nowrap">
                         Notify Me
                     </button>
-                </div>
+                </form>
                 <p class="text-gray-400 text-xs sm:text-sm mt-2 sm:mt-3">
                     Join 10,000+ subscribers waiting for our launch
                 </p>

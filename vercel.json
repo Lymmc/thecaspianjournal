@@ -33,5 +33,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://thecaspianjournal.com/$1",
+      "permanent": true
+    }
   ]
 }

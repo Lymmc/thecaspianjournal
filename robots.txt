@@ -21,4 +21,3 @@ Disallow: /*?*replytocom=
 
 # Sitemap and preferred host
 Sitemap: https://www.thecaspianjournal.com/sitemap.xml
-Host: www.thecaspianjournal.com

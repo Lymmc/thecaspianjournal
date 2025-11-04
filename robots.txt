@@ -1,15 +1,24 @@
-# robots.txt for The Caspian Journal
-
-# Allow all search engines
+# robots.txt for https://www.thecaspianjournal.com
+# Allow search engines to crawl public assets (important for proper rendering)
 User-agent: *
-Allow: /
+Allow: /*.css$
+Allow: /*.js$
+Allow: /images/
+Allow: /assets/
 
-# Block admin areas (if you add them later)
+# Disallow common sensitive or backend paths
+Disallow: /cgi-bin/
+Disallow: /wp-admin/
+Disallow: /wp-login.php
 Disallow: /admin/
+Disallow: /login
 Disallow: /private/
+Disallow: /tmp/
 
-# Sitemap location
+# Avoid indexing common query-parameter noise
+Disallow: /*?*preview=
+Disallow: /*?*replytocom=
+
+# Sitemap and preferred host
 Sitemap: https://www.thecaspianjournal.com/sitemap.xml
-
-# Crawl delay (optional - be nice to servers)
-Crawl-delay: 1
+Host: www.thecaspianjournal.com

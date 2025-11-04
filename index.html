@@ -146,7 +146,8 @@
                     <button class="text-gray-700 hover:text-blue-900 p-2" aria-label="Open menu">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
-                    <h1 class="text-xl sm:text-2xl font-serif text-blue-900 font-extrabold tracking-tight">The Caspian Journal</h1>
+                    <!-- changed: h1 -> div with semantic role heading level 2 -->
+                    <div role="heading" aria-level="2" class="text-xl sm:text-2xl font-serif text-blue-900 font-extrabold tracking-tight">The Caspian Journal</div>
                     <button class="text-gray-700 hover:text-blue-900 p-2" aria-label="Search">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
                     </button>
@@ -162,6 +163,7 @@
                         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
                     <div class="text-center flex-1">
+                        <!-- KEEP single H1 here -->
                         <h1 class="main-logo font-serif text-blue-900 tracking-tight font-extrabold" style="letter-spacing:-0.03em;">The Caspian Journal</h1>
                         <p class="text-[8px] sm:text-[10px] text-gray-500 mt-1 sm:mt-2 tracking-widest font-medium uppercase">THE VOICE OF THE CASPIAN REGION</p>
                     </div>
@@ -318,7 +320,8 @@
 
             <!-- Logo -->
             <div class="mb-6 sm:mb-8">
-                <h1 id="overlay-title" class="overlay-logo font-serif text-white font-extrabold tracking-tight mb-2 sm:mb-3" style="letter-spacing:-0.02em;">The Caspian Journal</h1>
+                <!-- changed: use h2 so page has single h1 -->
+                <h2 id="overlay-title" class="overlay-logo font-serif text-white font-extrabold tracking-tight mb-2 sm:mb-3" style="letter-spacing:-0.02em;">The Caspian Journal</h2>
                 <p class="text-blue-300 text-xs sm:text-sm tracking-widest font-medium uppercase">The Voice of the Caspian Region</p>
             </div>
 

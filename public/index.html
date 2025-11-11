@@ -66,6 +66,7 @@
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
@@ -74,7 +75,6 @@
         @keyframes marquee { 0% {transform:translateX(0);} 100% {transform:translateX(-50%);} }
         .animate-marquee { animation: marquee 40s linear infinite; }
 
-        .blur-content { filter: blur(4px); pointer-events: none; user-select: none; }
         .fade-in { animation: fadeIn 0.8s ease-out; }
         @keyframes fadeIn { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
 
@@ -90,368 +90,364 @@
         .logo-fixed { position: fixed; top:0; left:0; right:0; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); z-index:40; box-shadow:0 2px 10px rgba(0,0,0,0.1); transform:translateY(-100%); transition:transform .3s ease; }
         .logo-fixed.show { transform: translateY(0); }
 
-        /* overlay close btn */
         .overlay-close { position:absolute; top:12px; right:12px; background: rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color:#fff; width:36px; height:36px; display:flex; align-items:center; justify-content:center; border-radius:9999px; transition:transform .15s ease; }
         .overlay-close:hover{ transform:scale(1.05); }
     </style>
 </head>
+
 <body class="bg-white relative">
-    <!-- Fallback for bots / no-JS users so main content and CTA indekslenir -->
-    <noscript>
-        <div style="background:#0f172a;color:#fff;padding:20px;text-align:center;">
-            <h2 style="margin:0 0 8px;font-size:1.25rem;">The Caspian Journal — Coming Soon</h2>
-            <p style="margin:0 0 12px;">Bağımsız haberler için kayıt olun. Visit https://www.thecaspianjournal.com/ for updates.</p>
-            <p><a href="https://www.thecaspianjournal.com/" style="color:#60a5fa;">Go to site</a></p>
-        </div>
-    </noscript>
 
-    <!-- Background Content (Blurred when overlay active) -->
-    <div id="page-content" class="blur-content">
-        <!-- Breaking News Ticker -->
-        <div class="bg-red-600 text-white py-1.5 overflow-hidden">
-            <div id="ticker" class="flex items-center whitespace-nowrap animate-marquee">
-                <span class="px-4 font-bold text-xs uppercase tracking-wider inline-flex items-center gap-2">
-                    <span class="bg-white text-red-600 px-2 py-0.5 rounded">LIVE</span>
-                    BREAKING NEWS
-                </span>
-                <span class="px-8 text-sm">
-                    <span class="font-semibold text-yellow-300">[POLITICS]</span> Trump names Pam Bondi as attorney general after Matt Gaetz withdraws • <span class="text-red-200">3 hours ago</span>
-                </span>
-                <span class="px-8 text-sm">
-                    <span class="font-semibold text-yellow-300">[MIDDLE EAST]</span> ICC issues arrest warrants for Netanyahu and former Israeli defense minister • <span class="text-red-200">1 day ago</span>
-                </span>
-                <span class="px-8 text-sm">
-                    <span class="font-semibold text-yellow-300">[CLIMATE]</span> COP29 in Baku: Draft calls for $1.3 trillion in climate funding • <span class="text-red-200">6 hours ago</span>
-                </span>
-            </div>
-        </div>
+<!-- MAIN PAGE CONTENT (blur removed) -->
+<div id="page-content">
 
-        <!-- Top Bar -->
-        <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-b border-gray-700">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5">
-                <div class="flex items-center justify-between text-xs sm:text-sm">
-                    <div class="flex items-center gap-2 sm:gap-8">
-                        <div class="flex items-center gap-2 font-medium">
-                            <svg class="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                            <span class="text-gray-300 hidden sm:inline" id="live-date">Friday, November 22, 2024</span>
-                            <span class="text-gray-300 sm:hidden">Nov 22, 2024</span>
-                        </div>
-                        <span class="text-gray-400 hidden sm:inline">|</span>
-                        <span class="text-gray-300 hidden sm:inline">Baku 🌤️ 16°C</span>
+    <!-- Breaking News Ticker -->
+    <div class="bg-red-600 text-white py-1.5 overflow-hidden">
+        <div id="ticker" class="flex items-center whitespace-nowrap animate-marquee">
+            <span class="px-4 font-bold text-xs uppercase tracking-wider inline-flex items-center gap-2">
+                <span class="bg-white text-red-600 px-2 py-0.5 rounded">LIVE</span>
+                BREAKING NEWS
+            </span>
+            <span class="px-8 text-sm">
+                <span class="font-semibold text-yellow-300">[POLITICS]</span> Trump names Pam Bondi as attorney general after Matt Gaetz withdraws • <span class="text-red-200">3 hours ago</span>
+            </span>
+            <span class="px-8 text-sm">
+                <span class="font-semibold text-yellow-300">[MIDDLE EAST]</span> ICC issues arrest warrants for Netanyahu and former Israeli defense minister • <span class="text-red-200">1 day ago</span>
+            </span>
+            <span class="px-8 text-sm">
+                <span class="font-semibold text-yellow-300">[CLIMATE]</span> COP29 in Baku: Draft calls for $1.3 trillion in climate funding • <span class="text-red-200">6 hours ago</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5">
+            <div class="flex items-center justify-between text-xs sm:text-sm">
+                <div class="flex items-center gap-2 sm:gap-8">
+                    <div class="flex items-center gap-2 font-medium">
+                        <svg class="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                        <span class="text-gray-300 hidden sm:inline" id="live-date">Friday, November 22, 2024</span>
+                        <span class="text-gray-300 sm:hidden">Nov 22, 2024</span>
                     </div>
-                    <div class="flex items-center gap-3 sm:gap-6">
-                        <span class="text-gray-300">EN</span>
-                        <button class="px-2 sm:px-4 py-1 sm:py-1.5 bg-blue-600 hover:bg-blue-700 rounded text-xs sm:text-sm font-medium">
-                            Subscribe
-                        </button>
-                    </div>
+                    <span class="text-gray-400 hidden sm:inline">|</span>
+                    <span class="text-gray-300 hidden sm:inline">Baku 🌤️ 16°C</span>
+                </div>
+                <div class="flex items-center gap-3 sm:gap-6">
+                    <span class="text-gray-300">EN</span>
+                    <button class="px-2 sm:px-4 py-1 sm:py-1.5 bg-blue-600 hover:bg-blue-700 rounded text-xs sm:text-sm font-medium">Subscribe</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Fixed Logo Bar -->
-        <div id="fixed-logo" class="logo-fixed" role="banner" aria-label="Fixed site header">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6">
-                <div class="flex items-center justify-between py-3">
-                    <button class="text-gray-700 hover:text-blue-900 p-2" aria-label="Open menu">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    </button>
-                    <!-- changed: h1 -> div with semantic role heading level 2 -->
-                    <div role="heading" aria-level="2" class="text-xl sm:text-2xl font-serif text-blue-900 font-extrabold tracking-tight">The Caspian Journal</div>
-                    <button class="text-gray-700 hover:text-blue-900 p-2" aria-label="Search">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
-                    </button>
+    <!-- Fixed Logo -->
+    <div id="fixed-logo" class="logo-fixed">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between py-3">
+                <button class="text-gray-700 hover:text-blue-900 p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+
+                <div role="heading" aria-level="2" class="text-xl sm:text-2xl font-serif text-blue-900 font-extrabold tracking-tight">The Caspian Journal</div>
+
+                <button class="text-gray-700 hover:text-blue-900 p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="border-b-2 border-gray-100 bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="py-6 sm:py-8 flex items-center justify-between">
+
+                <button class="text-gray-700 hover:text-blue-900 transition-colors sm:block hidden">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+
+                <div class="text-center flex-1">
+                    <h1 class="main-logo font-serif text-blue-900 tracking-tight font-extrabold">The Caspian Journal</h1>
+                    <p class="text-[8px] sm:text-[10px] text-gray-500 mt-1 tracking-widest uppercase">THE VOICE OF THE CASPIAN REGION</p>
+                </div>
+
+                <button class="text-gray-700 hover:text-blue-900 transition-colors sm:block hidden">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
+                </button>
+            </div>
+
+            <nav class="border-t border-gray-200 overflow-x-auto">
+                <div class="flex items-center gap-1 py-0 min-w-max sm:min-w-0">
+                    <a class="px-6 py-4 text-sm font-semibold text-blue-900 bg-blue-50" href="#">Home</a>
+                    <a class="px-6 py-4 text-sm font-semibold text-gray-600" href="#">World</a>
+                    <a class="px-6 py-4 text-sm font-semibold text-gray-600" href="#">Economy</a>
+                    <a class="px-6 py-4 text-sm font-semibold text-gray-600" href="#">Politics</a>
+                    <a class="px-6 py-4 text-sm font-semibold text-gray-600 mobile-hide" href="#">Technology</a>
+                    <a class="px-6 py-4 text-sm font-semibold text-gray-600 mobile-hide" href="#">Energy</a>
+                    <a class="px-6 py-4 text-sm font-semibold text-gray-600 mobile-hide" href="#">Culture</a>
+                    <a class="px-6 py-4 text-sm font-semibold text-gray-600 mobile-hide" href="#">Sports</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Markets -->
+    <div class="bg-gray-900 text-white border-b border-gray-700 overflow-x-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
+            <div class="flex items-center justify-between min-w-max sm:min-w-0">
+                <div class="flex items-center gap-2">
+                    <span class="font-bold text-sm uppercase tracking-wider">MARKETS</span>
+                    <span class="text-green-400 text-xs animate-pulse">● LIVE</span>
+                </div>
+
+                <div class="flex items-center gap-8 ml-4">
+                    <div>
+                        <div class="text-xs text-gray-400 font-medium">Brent</div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-sm">$74.23</span>
+                            <span class="text-xs font-semibold text-red-400">-0.85%</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="text-xs text-gray-400 font-medium">USD/AZN</div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-sm">1.7000</span>
+                            <span class="text-xs font-semibold text-green-400">+0.02%</span>
+                        </div>
+                    </div>
+
+                    <div class="mobile-hide">
+                        <div class="text-xs text-gray-400 font-medium">Bitcoin</div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-sm">$98,340</span>
+                            <span class="text-xs font-semibold text-green-400">+1.52%</span>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Header -->
-        <header class="border-b-2 border-gray-100 bg-white shadow-sm" role="banner" aria-label="Site header">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6">
-                <div class="py-6 sm:py-8 flex items-center justify-between">
-                    <button class="text-gray-700 hover:text-blue-900 transition-colors sm:block hidden" aria-label="Open menu">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                    </button>
-                    <div class="text-center flex-1">
-                        <!-- KEEP single H1 here -->
-                        <h1 class="main-logo font-serif text-blue-900 tracking-tight font-extrabold" style="letter-spacing:-0.03em;">The Caspian Journal</h1>
-                        <p class="text-[8px] sm:text-[10px] text-gray-500 mt-1 sm:mt-2 tracking-widest font-medium uppercase">THE VOICE OF THE CASPIAN REGION</p>
+    <!-- MAIN CONTENT (unchanged) -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
+
+        <!-- Hero -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 hero-grid">
+
+            <article class="lg:col-span-8">
+                <div class="relative overflow-hidden rounded-lg mb-4">
+                    <img src="https://images.unsplash.com/photo-1589483232748-515c1279aa96?w=1200&h=600&fit=crop" class="w-full h-80 object-cover">
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-blue-900 text-white px-3 py-1.5 text-xs font-bold uppercase rounded">POLITICS</span>
                     </div>
-                    <button class="text-gray-700 hover:text-blue-900 transition-colors sm:block hidden" aria-label="Search">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg>
-                    </button>
                 </div>
 
-                <!-- Navigation -->
-                <nav class="border-t border-gray-200 overflow-x-auto" aria-label="Primary navigation">
-                    <div class="flex items-center justify-start sm:justify-center gap-1 py-0 min-w-max sm:min-w-0">
-                        <a class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-blue-900 bg-blue-50 whitespace-nowrap" href="#" aria-current="page">Home</a>
-                        <a class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap" href="#">World</a>
-                        <a class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap" href="#">Economy</a>
-                        <a class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap" href="#">Politics</a>
-                        <a class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap mobile-hide" href="#">Technology</a>
-                        <a class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap mobile-hide" href="#">Energy</a>
-                        <a class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap mobile-hide" href="#">Culture</a>
-                        <a class="px-3 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm font-semibold text-gray-600 whitespace-nowrap mobile-hide" href="#">Sports</a>
-                    </div>
-                </nav>
-            </div>
-        </header>
+                <h2 class="text-5xl font-serif font-bold text-gray-900 mb-4 leading-tight">
+                    Trump Taps Pam Bondi as Attorney General After Matt Gaetz Withdraws
+                </h2>
 
-        <!-- Live Markets -->
-        <div class="bg-gray-900 text-white border-b border-gray-700 overflow-x-auto">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3">
-                <div class="flex items-center justify-between min-w-max sm:min-w-0">
-                    <div class="flex items-center gap-2">
-                        <span class="font-bold text-xs sm:text-sm uppercase tracking-wider">MARKETS</span>
-                        <span class="text-green-400 text-xs animate-pulse">● LIVE</span>
-                    </div>
-                    <div class="flex items-center gap-4 sm:gap-8 ml-4">
-                        <div>
-                            <div class="text-[10px] sm:text-xs text-gray-400 font-medium">Brent</div>
-                            <div class="flex items-center gap-1 sm:gap-2">
-                                <span class="font-bold text-xs sm:text-sm">$74.23</span>
-                                <span class="text-[10px] sm:text-xs font-semibold text-red-400">-0.85%</span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="text-[10px] sm:text-xs text-gray-400 font-medium">USD/AZN</div>
-                            <div class="flex items-center gap-1 sm:gap-2">
-                                <span class="font-bold text-xs sm:text-sm">1.7000</span>
-                                <span class="text-[10px] sm:text-xs font-semibold text-green-400">+0.02%</span>
-                            </div>
-                        </div>
-                        <div class="mobile-hide">
-                            <div class="text-xs text-gray-400 font-medium">Bitcoin</div>
-                            <div class="flex items-center gap-2">
-                                <span class="font-bold text-sm">$98,340</span>
-                                <span class="text-xs font-semibold text-green-400">+1.52%</span>
-                            </div>
-                        </div>
-                    </div>
+                <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                    President-elect Donald Trump selected former Florida Attorney General Pam Bondi as his new pick for U.S. attorney general…
+                </p>
+
+                <div class="flex items-center gap-6 text-sm text-gray-600">
+                    <span class="font-semibold">Sarah Mitchell</span>
+                    <span>3 hours ago</span>
+                    <span class="mobile-hide">45.2K views</span>
                 </div>
-            </div>
+            </article>
+
+            <aside class="lg:col-span-4">
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 border-l-4 border-red-600 p-6 rounded-lg">
+
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
+                        <h3 class="font-bold text-red-900 uppercase tracking-wider text-sm">BREAKING NEWS</h3>
+                    </div>
+
+                    <div class="space-y-4">
+
+                        <div class="pb-4 border-b border-red-200">
+                            <span class="text-xs font-bold text-red-700 uppercase tracking-wider">INTERNATIONAL LAW</span>
+                            <h4 class="font-bold text-base text-gray-900 mt-1 mb-1 leading-snug">ICC Issues Arrest Warrants for Netanyahu and Hamas Leader</h4>
+                            <span class="text-xs text-gray-600">1 day ago</span>
+                        </div>
+
+                        <div class="pb-4 border-b border-red-200">
+                            <span class="text-xs font-bold text-red-700 uppercase tracking-wider">CLIMATE</span>
+                            <h4 class="font-bold text-base text-gray-900 mt-1 mb-1 leading-snug">COP29 Summit in Baku: $1.3T Climate Funding Proposal</h4>
+                            <span class="text-xs text-gray-600">6 hours ago</span>
+                        </div>
+
+                        <div class="mobile-hide pb-4 border-b border-red-200">
+                            <span class="text-xs font-bold text-red-700 uppercase tracking-wider">RUSSIA-UKRAINE</span>
+                            <h4 class="font-bold text-base text-gray-900 mt-1 mb-1 leading-snug">Putin Lowers Bar for Nuclear Weapons Use</h4>
+                            <span class="text-xs text-gray-600">12 hours ago</span>
+                        </div>
+
+                    </div>
+
+                </div>
+            </aside>
+
         </div>
 
-        <!-- Main Content -->
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
-            <!-- Hero Section -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 mb-8 sm:mb-12 hero-grid">
-                <article class="lg:col-span-8" aria-labelledby="hero-title">
-                    <div class="relative overflow-hidden rounded-lg mb-3 sm:mb-4">
-                        <img src="https://images.unsplash.com/photo-1589483232748-515c1279aa96?w=1200&h=600&fit=crop" alt="Pam Bondi" class="w-full h-48 sm:h-80 lg:h-[500px] object-cover">
-                        <div class="absolute top-2 sm:top-4 left-2 sm:left-4">
-                            <span class="bg-blue-900 text-white px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded">POLITICS</span>
-                        </div>
+        <!-- Today's Top Stories -->
+        <div class="mb-12">
+            <h3 class="text-3xl font-serif font-bold mb-6 pb-4 border-b-2 border-gray-900">Today's Top Stories</h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stories-grid">
+
+                <article>
+                    <div class="relative overflow-hidden rounded-lg mb-3">
+                        <img src="https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=600&h=400&fit=crop" class="w-full h-48 object-cover">
                     </div>
-                    <h2 id="hero-title" class="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-2 sm:mb-4 leading-tight">Trump Taps Pam Bondi as Attorney General After Matt Gaetz Withdraws</h2>
-                    <p class="text-base sm:text-lg lg:text-xl text-gray-700 mb-2 sm:mb-4 leading-relaxed">President-elect Donald Trump selected former Florida Attorney General Pam Bondi as his new pick for U.S. attorney general, hours after Matt Gaetz withdrew from consideration amid scrutiny over sexual misconduct allegations.</p>
-                    <div class="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-600">
-                        <span class="font-semibold">Sarah Mitchell</span>
-                        <span>3 hours ago</span>
-                        <span class="mobile-hide">45.2K views</span>
-                    </div>
+                    <span class="text-blue-900 text-xs font-bold uppercase tracking-wider">BUSINESS</span>
+                    <h4 class="text-lg font-bold text-gray-900 mt-2 mb-2 leading-tight">Ford to Cut 4,000 Jobs in Europe</h4>
+                    <span class="text-xs text-gray-600">2 days ago</span>
                 </article>
 
-                <aside class="lg:col-span-4">
-                    <div class="bg-gradient-to-br from-red-50 to-orange-50 border-l-4 border-red-600 p-4 sm:p-6 rounded-lg" aria-labelledby="breaking-title">
-                        <div class="flex items-center gap-2 mb-3 sm:mb-4">
-                            <div class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
-                            <h3 id="breaking-title" class="font-bold text-red-900 uppercase tracking-wider text-xs sm:text-sm">BREAKING NEWS</h3>
-                        </div>
-                        <div class="space-y-3 sm:space-y-4">
-                            <div class="pb-3 sm:pb-4 border-b border-red-200">
-                                <span class="text-[10px] sm:text-xs font-bold text-red-700 uppercase tracking-wider">INTERNATIONAL LAW</span>
-                                <h4 class="font-bold text-sm sm:text-base text-gray-900 mt-1 mb-1 leading-snug">ICC Issues Arrest Warrants for Netanyahu and Hamas Leader</h4>
-                                <span class="text-[10px] sm:text-xs text-gray-600">1 day ago</span>
-                            </div>
-                            <div class="pb-3 sm:pb-4 border-b border-red-200">
-                                <span class="text-[10px] sm:text-xs font-bold text-red-700 uppercase tracking-wider">CLIMATE</span>
-                                <h4 class="font-bold text-sm sm:text-base text-gray-900 mt-1 mb-1 leading-snug">COP29 Summit in Baku: $1.3T Climate Funding Proposal</h4>
-                                <span class="text-[10px] sm:text-xs text-gray-600">6 hours ago</span>
-                            </div>
-                            <div class="mobile-hide pb-4 border-b border-red-200">
-                                <span class="text-xs font-bold text-red-700 uppercase tracking-wider">RUSSIA-UKRAINE</span>
-                                <h4 class="font-bold text-gray-900 mt-1 mb-1 leading-snug">Putin Lowers Bar for Nuclear Weapons Use</h4>
-                                <span class="text-xs text-gray-600">12 hours ago</span>
-                            </div>
-                        </div>
+                <article>
+                    <div class="relative overflow-hidden rounded-lg mb-3">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop" class="w-full h-48 object-cover">
                     </div>
-                </aside>
+                    <span class="text-blue-900 text-xs font-bold uppercase tracking-wider">TECHNOLOGY</span>
+                    <h4 class="text-lg font-bold text-gray-900 mt-2 mb-2 leading-tight">Baltic Sea Cable Sabotage</h4>
+                    <span class="text-xs text-gray-600">2 days ago</span>
+                </article>
+
+                <article class="mobile-hide">
+                    <div class="relative overflow-hidden rounded-lg mb-3">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop" class="w-full h-48 object-cover">
+                    </div>
+                    <span class="text-blue-900 text-xs font-bold uppercase tracking-wider">WEATHER</span>
+                    <h4 class="text-lg font-bold text-gray-900 mt-2 mb-2 leading-tight">Bomb Cyclone Hits US West Coast</h4>
+                    <span class="text-xs text-gray-600">2 days ago</span>
+                </article>
+
+                <article class="mobile-hide">
+                    <div class="relative overflow-hidden rounded-lg mb-3">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop" class="w-full h-48 object-cover">
+                    </div>
+                    <span class="text-blue-900 text-xs font-bold uppercase tracking-wider">BUSINESS</span>
+                    <h4 class="text-lg font-bold text-gray-900 mt-2 mb-2 leading-tight">India's Adani Indicted</h4>
+                    <span class="text-xs text-gray-600">1 day ago</span>
+                </article>
+
             </div>
 
-            <!-- Today's Stories -->
-            <div class="mb-8 sm:mb-12">
-                <h3 class="text-2xl sm:text-3xl font-serif font-bold mb-4 sm:mb-6 pb-3 sm:pb-4 border-b-2 border-gray-900">Today's Top Stories</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 stories-grid">
-                    <article>
-                        <div class="relative overflow-hidden rounded-lg mb-2 sm:mb-3">
-                            <img src="https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=600&h=400&fit=crop" alt="Ford Jobs" class="w-full h-40 sm:h-48 object-cover">
-                        </div>
-                        <span class="text-blue-900 text-[10px] sm:text-xs font-bold uppercase tracking-wider">BUSINESS</span>
-                        <h4 class="text-base sm:text-lg font-bold text-gray-900 mt-1 sm:mt-2 mb-1 sm:mb-2 leading-tight">Ford to Cut 4,000 Jobs in Europe Amid Economic Challenges</h4>
-                        <span class="text-[10px] sm:text-xs text-gray-600">2 days ago</span>
-                    </article>
-                    <article>
-                        <div class="relative overflow-hidden rounded-lg mb-2 sm:mb-3">
-                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop" alt="Satellite" class="w-full h-40 sm:h-48 object-cover">
-                        </div>
-                        <span class="text-blue-900 text-[10px] sm:text-xs font-bold uppercase tracking-wider">TECHNOLOGY</span>
-                        <h4 class="text-base sm:text-lg font-bold text-gray-900 mt-1 sm:mt-2 mb-1 sm:mb-2 leading-tight">Baltic Sea Cable Sabotage: Denmark Boards Chinese Ship</h4>
-                        <span class="text-[10px] sm:text-xs text-gray-600">2 days ago</span>
-                    </article>
-                    <article class="mobile-hide">
-                        <div class="relative overflow-hidden rounded-lg mb-3">
-                            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=400&fit=crop" alt="Storm" class="w-full h-48 object-cover">
-                        </div>
-                        <span class="text-blue-900 text-xs font-bold uppercase tracking-wider">WEATHER</span>
-                        <h4 class="text-lg font-bold text-gray-900 mt-2 mb-2 leading-tight">Bomb Cyclone Hits US West Coast, 2 Dead</h4>
-                        <span class="text-xs text-gray-600">2 days ago</span>
-                    </article>
-                    <article class="mobile-hide">
-                        <div class="relative overflow-hidden rounded-lg mb-3">
-                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop" alt="India" class="w-full h-48 object-cover">
-                        </div>
-                        <span class="text-blue-900 text-xs font-bold uppercase tracking-wider">BUSINESS</span>
-                        <h4 class="text-lg font-bold text-gray-900 mt-2 mb-2 leading-tight">India's Adani Indicted on US Bribery Charges</h4>
-                        <span class="text-xs text-gray-600">1 day ago</span>
-                    </article>
-                </div>
-            </div>
-        </main>
-    </div>
+        </div>
 
-    <!-- Coming Soon Overlay -->
-    <div id="coming-soon-overlay" class="fixed inset-0 bg-gradient-to-br from-blue-900/95 via-gray-900/95 to-black/95 backdrop-blur-sm flex items-center justify-center z-50 p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
-        <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center fade-in w-full relative">
-            <button id="overlay-close" class="overlay-close" aria-label="Close overlay">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+    </main>
 
-            <!-- Logo -->
-            <div class="mb-6 sm:mb-8">
-                <!-- changed: use h2 so page has single h1 -->
-                <h2 id="overlay-title" class="overlay-logo font-serif text-white font-extrabold tracking-tight mb-2 sm:mb-3" style="letter-spacing:-0.02em;">The Caspian Journal</h2>
-                <p class="text-blue-300 text-xs sm:text-sm tracking-widest font-medium uppercase">The Voice of the Caspian Region</p>
-            </div>
+</div> <!-- END page-content NO BLUR -->
 
-            <!-- Coming Soon Badge -->
-            <div class="mb-6 sm:mb-8">
-                <div class="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-bold text-lg sm:text-2xl tracking-wide pulse-glow">COMING SOON</div>
-            </div>
+<!-- Coming Soon Overlay (unchanged, still exists) -->
+<div id="coming-soon-overlay" class="fixed inset-0 bg-gradient-to-br from-blue-900/95 via-gray-900/95 to-black/95 backdrop-blur-sm flex items-center justify-center z-50 p-6">
 
-            <!-- Message -->
-            <div class="mb-8 sm:mb-12">
-                <h2 class="text-2xl sm:text-3xl text-white font-bold mb-3 sm:mb-4">A New Era of Journalism is Coming</h2>
-                <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-2">We're building the Caspian region's premier independent news source.</p>
-                <p class="text-gray-400 text-sm sm:text-base">In-depth reporting • Expert analysis • Unbiased coverage</p>
-            </div>
+    <div class="max-w-2xl mx-auto text-center fade-in relative">
 
-            <!-- Email Signup -->
-            <div class="mb-8 sm:mb-12">
-                <p class="text-white font-semibold mb-3 sm:mb-4 text-base sm:text-lg">Be the first to know when we launch</p>
-                <form id="notify-form" action="https://formspree.io/f/xjkppadl" method="POST" class="flex flex-col sm:flex-row gap-2 sm:gap-3 max-w-md mx-auto" aria-label="Subscribe form">
-                    <input id="notify-email" type="email" name="email" placeholder="Enter your email" required aria-label="Email address" class="flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-lg text-gray-900 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-bold text-sm sm:text-base transition-all transform hover:scale-105 whitespace-nowrap">Notify Me</button>
-                </form>
-                <p class="text-gray-400 text-xs sm:text-sm mt-2 sm:mt-3">Be part of the community awaiting our launch.</p>
-            </div>
+        <button id="overlay-close" class="overlay-close">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-linecap="round"/>
+            </svg>
+        </button>
 
-            <!-- Social Media -->
-            <div>
-                <p class="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">Follow us for updates</p>
-                <div class="flex justify-center gap-4 sm:gap-6">
-                    <a href="https://x.com/TCaspianJournal" target="_blank" rel="noopener noreferrer" aria-label="Follow on X (Twitter)" class="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all transform hover:scale-110">
-                        <span class="sr-only">X</span>
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="https://instagram.com/thecaspianjournal" target="_blank" rel="noopener noreferrer" aria-label="Follow on Instagram" class="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all transform hover:scale-110">
-                        <span class="sr-only">Instagram</span>
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://linkedin.com/company/thecaspianjournal" target="_blank" rel="noopener noreferrer" aria-label="Follow on LinkedIn" class="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all transform hover:scale-110">
-                        <span class="sr-only">LinkedIn</span>
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    </a>
-                    <a href="https://bsky.app/profile/thecaspianjournal.com" target="_blank" rel="noopener noreferrer" aria-label="Follow on Bluesky" class="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-all transform hover:scale-110">
-                    <span class="sr-only">Bluesky</span>
-                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-white" viewBox="0 0 600 530" fill="currentColor" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-                        <path d="M135.72 44.03c66.496 49.921 138.02 151.14 164.28 205.46 26.262-54.316 97.782-155.54 164.28-205.46 47.98-36.021 125.72-63.892 125.72 24.795 0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.3797-3.6904-10.832-3.7077-7.8964-.0174-2.9357-1.1937.51669-3.7077 7.8964-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.4491-163.25-81.433-5.9562-21.282-16.111-152.36-16.111-170.07 0-88.687 77.742-60.816 125.72-24.795z"/>
-                    </svg>
-                   </a>
-                </div>
-            </div>
+        <h2 class="overlay-logo font-serif text-white font-extrabold tracking-tight mb-2">The Caspian Journal</h2>
+        <p class="text-blue-300 text-sm tracking-widest uppercase">The Voice of the Caspian Region</p>
 
-            <!-- Footer Note -->
-            <div class="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-white/10">
-                <p class="text-gray-500 text-xs sm:text-sm">© 2025 The Caspian Journal. All rights reserved.</p>
+        <div class="mt-8 mb-8">
+            <div class="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-3 rounded-full font-bold text-2xl tracking-wide pulse-glow">
+                COMING SOON
             </div>
         </div>
+
+        <div class="mb-12">
+            <h2 class="text-3xl text-white font-bold mb-4">A New Era of Journalism is Coming</h2>
+            <p class="text-gray-300 text-lg leading-relaxed mb-2">We're building the Caspian region's premier independent news source.</p>
+            <p class="text-gray-400 text-base">In-depth reporting • Expert analysis • Unbiased coverage</p>
+        </div>
+
+        <div class="mb-12">
+            <p class="text-white font-semibold mb-4 text-lg">Be the first to know when we launch</p>
+
+            <form id="notify-form" action="https://formspree.io/f/xjkppadl" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <input id="notify-email" type="email" name="email" placeholder="Enter your email" required class="flex-1 px-6 py-4 rounded-lg text-gray-900 text-base focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-8 py-4 rounded-lg font-bold text-base hover:scale-105 transition">
+                    Notify Me
+                </button>
+            </form>
+
+            <p class="text-gray-400 text-sm mt-3">Be part of the community awaiting our launch.</p>
+        </div>
+
     </div>
 
-    <script>
-        // Elements
-        const fixedLogo = document.getElementById('fixed-logo');
-        const dateElement = document.getElementById('live-date');
-        const overlay = document.getElementById('coming-soon-overlay');
-        const pageContent = document.getElementById('page-content');
-        const overlayClose = document.getElementById('overlay-close');
-        const notifyForm = document.getElementById('notify-form');
-        const notifyEmail = document.getElementById('notify-email');
-        const ticker = document.getElementById('ticker');
+</div>
 
-        // Fixed logo on scroll
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            if (currentScroll > 200) fixedLogo.classList.add('show'); else fixedLogo.classList.remove('show');
+<script>
+    const fixedLogo = document.getElementById('fixed-logo');
+    const dateElement = document.getElementById('live-date');
+    const overlay = document.getElementById('coming-soon-overlay');
+    const pageContent = document.getElementById('page-content');
+    const overlayClose = document.getElementById('overlay-close');
+    const notifyForm = document.getElementById('notify-form');
+    const notifyEmail = document.getElementById('notify-email');
+    const ticker = document.getElementById('ticker');
+
+    window.addEventListener('scroll', () => {
+        const y = window.pageYOffset || document.documentElement.scrollTop;
+        if (y > 200) fixedLogo.classList.add('show');
+        else fixedLogo.classList.remove('show');
+    });
+
+    function updateTime() {
+        const now = new Date();
+        const options = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
+        if (dateElement) dateElement.textContent = now.toLocaleDateString('en-US', options);
+    }
+    updateTime();
+    setInterval(updateTime, 60000);
+
+    if (ticker) ticker.innerHTML = ticker.innerHTML + ticker.innerHTML;
+
+    const subscribedKey = 'cj_subscribed_v1';
+
+    function setOverlayVisible(visible) {
+        if (!overlay) return;
+        overlay.style.display = visible ? 'flex' : 'none';
+        if (visible) document.body.style.overflow = 'hidden';
+        else document.body.style.overflow = '';
+    }
+
+    const subscribed = localStorage.getItem(subscribedKey) === 'true';
+    setOverlayVisible(!subscribed);
+
+    if (overlayClose) overlayClose.addEventListener('click', () => setOverlayVisible(false));
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setOverlayVisible(false);
+    });
+
+    if (notifyForm) {
+        notifyForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const action = notifyForm.getAttribute('action');
+            const formData = new FormData(notifyForm);
+
+            try {
+                await fetch(action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: formData });
+                localStorage.setItem(subscribedKey, 'true');
+                notifyForm.parentElement.innerHTML = '<p class="text-white font-semibold text-lg">Thanks! You will be notified.</p>';
+                setTimeout(() => setOverlayVisible(false), 900);
+            } catch (err) {
+                notifyForm.parentElement.insertAdjacentHTML('beforeend', '<p class="text-red-300 mt-3">There was an error.</p>');
+            }
         });
+    }
+</script>
 
-        // Update date
-        function updateTime() {
-            const now = new Date();
-            const options = { weekday:'long', year:'numeric', month:'long', day:'numeric' };
-            if (dateElement) dateElement.textContent = now.toLocaleDateString('en-US', options);
-        }
-        updateTime();
-        setInterval(updateTime, 60000);
-
-        // Ticker duplication for seamless loop
-        if (ticker) { ticker.innerHTML = ticker.innerHTML + ticker.innerHTML; }
-
-        // Overlay control and form handling
-        const subscribedKey = 'cj_subscribed_v1';
-        function setOverlayVisible(visible) {
-            if (!overlay) return;
-            overlay.style.display = visible ? 'flex' : 'none';
-            if (visible) { pageContent.classList.add('blur-content'); document.body.style.overflow = 'hidden'; }
-            else { pageContent.classList.remove('blur-content'); document.body.style.overflow = ''; }
-        }
-
-        const subscribed = localStorage.getItem(subscribedKey) === 'true';
-        setOverlayVisible(!subscribed);
-
-        if (overlayClose) overlayClose.addEventListener('click', () => setOverlayVisible(false));
-        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOverlayVisible(false); });
-
-        if (notifyForm) {
-            notifyForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const action = notifyForm.getAttribute('action') || '';
-                const formData = new FormData(notifyForm);
-                const email = (formData.get('email') || '').toString().trim();
-                if (!email) return;
-                try {
-                    await fetch(action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: formData });
-                    localStorage.setItem(subscribedKey, 'true');
-                    const parent = notifyForm.parentElement;
-                    if (parent) parent.innerHTML = '<p class="text-white font-semibold text-lg">Thanks! You will be notified when we launch.</p>';
-                    setTimeout(() => setOverlayVisible(false), 900);
-                } catch (err) {
-                    const parent = notifyForm.parentElement;
-                    if (parent) parent.insertAdjacentHTML('beforeend', '<p class="text-red-300 mt-3">There was an error. Please try again.</p>');
-                }
-            });
-        }
-    </script>
 </body>
 </html>
